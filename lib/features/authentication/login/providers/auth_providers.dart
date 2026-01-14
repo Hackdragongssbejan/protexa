@@ -1,17 +1,10 @@
 import 'package:protexa/app/app_imports.dart';
-
-final firebaseAuthSourceProvider = Provider<FirebaseAuthSource>((ref) {
-  return FirebaseAuthSource();
+final firebaseAuthProvider = Provider<FirebaseAuth>((ref) {
+  return FirebaseAuth.instance;
 });
-
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
-  return AuthRepository(ref.read(firebaseAuthSourceProvider));
+  return AuthRepository(ref.read(firebaseAuthProvider));
 });
-
-final authControllerProvider = Provider<AuthController>((ref) {
-  return AuthController(ref.read(authRepositoryProvider));
-});
-
-final authStateProvider = StreamProvider<bool>((ref) {
-  return ref.read(authRepositoryProvider).authStateStream();
+final authStateProvider = StreamProvider<User?>((ref) {
+  return ref.read(authRepositoryProvider).authStateChanges();
 });

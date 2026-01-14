@@ -22,4 +22,11 @@ export 'package:protexa/features/authentication/login/data/sources/firebase_auth
 export 'package:protexa/features/authentication/login/controllers/auth_controller.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:protexa/firebase_options.dart';
-
+export 'package:firebase_auth/firebase_auth.dart';
+export 'package:protexa/core/constants/padding.dart';
+export 'package:protexa/core/constants/spacing.dart';
+export 'package:protexa/features/authentication/login/providers/text_controller_providers.dart';
+export 'package:protexa/features/authentication/login/login_screen.dart';
+export 'package:protexa/features/authentication/login/providers/auth_providers.dart';
+export 'package:protexa/features/home_dash_board/dashboard_screen.dart';
+export 'package:protexa/features/authentication/auth_gate.dart';

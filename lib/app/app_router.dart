@@ -5,6 +5,7 @@ import 'package:protexa/app/app_imports.dart';
 /// ----------------------------
 class AppRoutes {
   static const splash = '/';
+  static const authGate = '/authGate';
   static const login = '/login';
   static const otp = '/otp';
   static const dashboard = '/dashboard';
@@ -25,17 +26,17 @@ class AppRouter {
       ) {
     switch (settings.name) {
       case AppRoutes.splash:
-        return _page(const SplashScreen());
+        return _page(const AuthGate());
 
-      // case AppRoutes.login:
-      //   return _page(const LoginScreen());
-      //
-      // case AppRoutes.otp:
-      //   return _page(const OtpScreen());
-      //
-      // case AppRoutes.dashboard:
-      //   return _page(const DashboardScreen());
-      //
+      case AppRoutes.login:
+        return _page(const LoginScreen());
+
+      case AppRoutes.authGate:
+        return _page(const AuthGate());
+
+      case AppRoutes.dashboard:
+        return _page(const DashboardScreen());
+
       // case AppRoutes.addFood:
       //   return _page(const AddFoodScreen());
       //

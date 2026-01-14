@@ -1,44 +1,38 @@
-import 'package:protexa/app/app_imports.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:protexa/features/authentication/login/data/repo/firebase_auth_repo.dart';
+import 'package:protexa/features/authentication/login/providers/auth_providers.dart';
 
-class AuthController {
-  final AuthRepository _repository;
+final authControllerProvider =
+StateNotifierProvider<AuthController, AsyncValue<void>>((ref) {
+  return AuthController(ref.read(authRepositoryProvider));
+});
 
-  AuthController(this._repository);
+class AuthController extends StateNotifier<AsyncValue<void>> {
+  final AuthRepository _repo;
 
-  Future<void> signInWithEmail({
-    required String email,
-    required String password,
-  }) async {
-    await _repository.loginWithEmail(email, password);
+  AuthController(this._repo) : super(const AsyncData(null));
+
+  Future<void> signUp(String email, String password) async {
+    state = const AsyncLoading();
+    try {
+      await _repo.signUp(email: email, password: password);
+      state = const AsyncData(null);
+    } catch (e, st) {
+      state = AsyncError(e, st);
+    }
   }
 
-  Future<void> signUpWithEmail({
-    required String email,
-    required String password,
-  }) async {
-    await _repository.registerWithEmail(email, password);
-  }
-
-  Future<void> signInWithPhone({
-    required String phone,
-    required Function(String verificationId) onCodeSent,
-    required Function(String error) onError,
-  }) async {
-    await _repository.loginWithPhone(
-      phone,
-      onCodeSent,
-      onError,
-    );
-  }
-
-  Future<void> verifyOtp({
-    required String verificationId,
-    required String otp,
-  }) async {
-    await _repository.verifyOtp(verificationId, otp);
+  Future<void> login(String email, String password) async {
+    state = const AsyncLoading();
+    try {
+      await _repo.login(email: email, password: password);
+      state = const AsyncData(null);
+    } catch (e, st) {
+      state = AsyncError(e, st);
+    }
   }
 
   Future<void> logout() async {
-    await _repository.logout();
+    await _repo.logout();
   }
 }

@@ -1,46 +1,34 @@
 import 'package:protexa/app/app_imports.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepository {
-  final FirebaseAuthSource _source;
+  final FirebaseAuth _auth;
 
-  AuthRepository(this._source);
+  AuthRepository(this._auth);
 
-  Stream<bool> authStateStream() {
-    return _source.authStateChanges().map((user) => user != null);
-  }
+  Stream<User?> authStateChanges() => _auth.authStateChanges();
 
-  Future<void> loginWithEmail(String email, String password) async {
-    await _source.signInWithEmail(
+  Future<UserCredential> signUp({
+    required String email,
+    required String password,
+  }) {
+    return _auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
   }
 
-  Future<void> registerWithEmail(String email, String password) async {
-    await _source.registerWithEmail(
+  Future<UserCredential> login({
+    required String email,
+    required String password,
+  }) {
+    return _auth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
   }
 
-  Future<void> loginWithPhone(
-      String phone,
-      Function(String verificationId) onCodeSent,
-      Function(String error) onError,
-      ) {
-    return _source.verifyPhoneNumber(
-      phoneNumber: phone,
-      codeSent: onCodeSent,
-      onError: onError,
-    );
-  }
+  Future<void> logout() => _auth.signOut();
 
-  Future<void> verifyOtp(String id, String otp) async {
-    await _source.verifyOtp(
-      verificationId: id,
-      otp: otp,
-    );
-  }
-
-  Future<void> logout() => _source.signOut();
+  User? get currentUser => _auth.currentUser;
 }
