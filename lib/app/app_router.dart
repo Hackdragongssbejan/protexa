@@ -1,0 +1,66 @@
+import 'package:protexa/app/app_imports.dart';
+
+/// ----------------------------
+/// Route Names (single source)
+/// ----------------------------
+class AppRoutes {
+  static const splash = '/';
+  static const login = '/login';
+  static const otp = '/otp';
+  static const dashboard = '/dashboard';
+  static const addFood = '/add-food';
+  static const addWater = '/add-water';
+  static const addWorkout = '/add-workout';
+  static const history = '/history';
+  static const analytics = '/analytics';
+}
+
+/// ----------------------------
+/// App Router
+/// ----------------------------
+class AppRouter {
+  static Route<dynamic> onGenerateRoute(
+      RouteSettings settings,
+      WidgetRef ref,
+      ) {
+    switch (settings.name) {
+      case AppRoutes.splash:
+        return _page(const SplashScreen());
+
+      // case AppRoutes.login:
+      //   return _page(const LoginScreen());
+      //
+      // case AppRoutes.otp:
+      //   return _page(const OtpScreen());
+      //
+      // case AppRoutes.dashboard:
+      //   return _page(const DashboardScreen());
+      //
+      // case AppRoutes.addFood:
+      //   return _page(const AddFoodScreen());
+      //
+      // case AppRoutes.addWater:
+      //   return _page(const AddWaterScreen());
+      //
+      // case AppRoutes.addWorkout:
+      //   return _page(const AddWorkoutScreen());
+      //
+      // case AppRoutes.history:
+      //   return _page(const HistoryScreen());
+      //
+      // case AppRoutes.analytics:
+      //   return _page(const AnalyticsScreen());
+
+      default:
+        return _page(
+          const Scaffold(
+            body: Center(child: Text('Route not found')),
+          ),
+        );
+    }
+  }
+
+  static MaterialPageRoute _page(Widget child) {
+    return MaterialPageRoute(builder: (_) => child);
+  }
+}

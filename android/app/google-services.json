@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "653124647916",
+    "project_id": "protexa-6d60c",
+    "storage_bucket": "protexa-6d60c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653124647916:android:ab533d1953b5f2d6a19ec9",
+        "android_client_info": {
+          "package_name": "com.kodnix.protexa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAljmEguaKMC6dILg4BN8d-V5R3-UKEj-0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

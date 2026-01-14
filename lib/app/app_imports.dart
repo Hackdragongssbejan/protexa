@@ -1,0 +1,25 @@
+export 'package:flutter/material.dart';
+export 'package:flutter_riverpod/flutter_riverpod.dart';
+export 'package:protexa/app/app.dart';
+export 'package:protexa/features/authentication/splash/splash_screen.dart';
+export 'package:protexa/app/app_router.dart';
+export 'package:scaled_app/scaled_app.dart';
+export 'package:protexa/core/scaling_factor/scale_factor.dart';
+export 'package:protexa/core/constants/app_text_style.dart';
+export 'package:protexa/core/widgets/text/reusable_text.dart';
+export 'package:protexa/core/constants/app_colors.dart';
+export 'package:protexa/core/theme/app_colors_provider.dart';
+export 'package:protexa/core/widgets/layout/reusable_center.dart';
+export 'package:protexa/core/widgets/layout/reusable_scaffold.dart';
+export 'dart:io';
+export 'package:flutter/services.dart';
+export 'package:protexa/core/theme/theme_provider.dart';
+export 'package:protexa/core/animations/splash_text_animation.dart';
+export 'package:protexa/features/authentication/splash/controller/splash_controller.dart';
+export 'package:protexa/features/authentication/splash/providers/splash_controller_provider.dart';
+export 'package:protexa/features/authentication/login/data/repo/firebase_auth_repo.dart';
+export 'package:protexa/features/authentication/login/data/sources/firebase_auth_source.dart';
+export 'package:protexa/features/authentication/login/controllers/auth_controller.dart';
+export 'package:firebase_core/firebase_core.dart';
+export 'package:protexa/firebase_options.dart';
+
